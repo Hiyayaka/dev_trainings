@@ -1,0 +1,45 @@
+[gd_scene load_steps=2 format=3 uid="uid://bls33cuy40271"]
+
+[ext_resource type="Script" uid="uid://c5t1cl5odthx8" path="res://modes/truthtable/scene.gd" id="1_bohlb"]
+
+[node name="scene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bohlb")
+
+[node name="CC" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBC" type="VBoxContainer" parent="CC"]
+layout_mode = 2
+
+[node name="question" type="Label" parent="CC/VBC"]
+layout_mode = 2
+text = "<Empty question>"
+
+[node name="edit" type="LineEdit" parent="CC/VBC"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+
+[node name="truth_table" type="HBoxContainer" parent="CC/VBC"]
+layout_mode = 2
+
+[node name="hbc" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="back" type="Button" parent="hbc"]
+layout_mode = 2
+text = "Back"

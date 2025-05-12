@@ -1,0 +1,75 @@
+[gd_scene load_steps=2 format=3 uid="uid://d11a63cqtjlfi"]
+
+[ext_resource type="Script" uid="uid://ck3pmxe6h10o4" path="res://modes/convert/scene.gd" id="1_eveo6"]
+
+[node name="scene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_eveo6")
+
+[node name="CC" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBC" type="VBoxContainer" parent="CC"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+
+[node name="question" type="Label" parent="CC/VBC"]
+layout_mode = 2
+
+[node name="answer" type="LineEdit" parent="CC/VBC"]
+layout_mode = 2
+keep_editing_on_text_submit = true
+
+[node name="result" type="Label" parent="CC/VBC"]
+layout_mode = 2
+
+[node name="HBC" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(300, 40)
+layout_mode = 0
+offset_right = 300.0
+offset_bottom = 40.0
+
+[node name="back" type="Button" parent="HBC"]
+layout_mode = 2
+text = "back"
+
+[node name="spacer" type="Control" parent="HBC"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
+[node name="info_max" type="Label" parent="HBC"]
+layout_mode = 2
+text = "Higest possible roll:"
+
+[node name="higest_value" type="SpinBox" parent="HBC"]
+layout_mode = 2
+max_value = 1e+07
+value = 5000.0
+rounded = true
+
+[node name="info_custom" type="Label" parent="HBC"]
+layout_mode = 2
+text = "override: (-1 for ignore)"
+
+[node name="custom_value" type="SpinBox" parent="HBC"]
+layout_mode = 2
+min_value = -1.0
+max_value = 1e+07
+value = -1.0
+rounded = true
+
+[node name="refresh" type="Button" parent="HBC"]
+layout_mode = 2
+text = "refresh"
+
+[node name="types" type="Node" parent="."]

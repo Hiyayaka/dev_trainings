@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=3 uid="uid://c2vvkcaa1shjg"]
+
+[ext_resource type="Script" uid="uid://dc20dcgdxxlw8" path="res://modes/menu/scene.gd" id="1_f4s2x"]
+
+[node name="scene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_f4s2x")
+
+[node name="CC" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBC" type="VBoxContainer" parent="CC"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+alignment = 1

@@ -10,7 +10,8 @@ config_version=5
 
 [application]
 
-config/name="inssi"
+config/name="Dev_Trainings"
+config/description="Some random questions related somewhat to programming."
 run/main_scene="uid://c2vvkcaa1shjg"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"

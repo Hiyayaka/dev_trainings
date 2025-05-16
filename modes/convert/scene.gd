@@ -23,10 +23,12 @@ func _ready() -> void:
 # func convert_value(int) # to convert values for questions always from decimal to wanted type
 # var type:String # to give a name
 	var types:Node=$types
-	for file_name in DirAccess.get_files_at("res://modes/convert/types"):
-		if file_name.ends_with(".gd"):
-			var node:Node=load("res://modes/convert/types/{file_name}".format({"file_name":file_name})).new()
-			types.add_child(node)
+	types.add_child(load("res://modes/convert/types/binary.gd").new())
+	types.add_child(load("res://modes/convert/types/decimal.gd").new())
+	types.add_child(load("res://modes/convert/types/hexadecimal.gd").new())
+		#if file_name.ends_with(".gd"):
+			#var node:Node=load("res://modes/convert/types/{file_name}".format({"file_name":file_name})).new()
+			#types.add_child(node)
 
 	ask_a_question()
 

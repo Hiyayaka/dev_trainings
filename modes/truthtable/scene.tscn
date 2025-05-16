@@ -24,6 +24,10 @@ grow_vertical = 2
 [node name="VBC" type="VBoxContainer" parent="CC"]
 layout_mode = 2
 
+[node name="question_info" type="Label" parent="CC/VBC"]
+layout_mode = 2
+text = "Question:"
+
 [node name="question" type="Label" parent="CC/VBC"]
 layout_mode = 2
 text = "<Empty question>"
@@ -43,3 +47,25 @@ offset_bottom = 40.0
 [node name="back" type="Button" parent="hbc"]
 layout_mode = 2
 text = "Back"
+
+[node name="max_tokens_label" type="Label" parent="hbc"]
+layout_mode = 2
+text = "Max Tokens:"
+
+[node name="max_tokens_spinbox" type="SpinBox" parent="hbc"]
+layout_mode = 2
+min_value = 3.0
+value = 5.0
+
+[node name="max_identifiers_label" type="Label" parent="hbc"]
+layout_mode = 2
+text = "Max Identifiers:"
+
+[node name="max_identifiers_spinbox" type="SpinBox" parent="hbc"]
+layout_mode = 2
+min_value = 1.0
+value = 3.0
+
+[node name="reroll" type="Button" parent="hbc"]
+layout_mode = 2
+text = "Reroll question"

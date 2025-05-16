@@ -1,27 +1,12 @@
 class_name Exclusive_Disjunction
-extends Token
+extends Operator
 
+##When values are calculated, gives true if left and right hand Tokens has different value.
+
+##All the possible symbols for this operator
 const OPERATOR_LIST:Array=["xor","⊕"]
 
-func build_formula() -> bool:
-	if !next:
-		expression.error="Exclusive Disjunction missing right hand side object."
-		return false
-	if next is Identifier or next is OExpression or next is Negation:
-		pass
-	else:
-		expression.error="Exclusive Disjunction right hand side is not Identifier nor Expression."
-		return false
-	if !prev:
-		expression.error="Exclusive Disjunction missing left hand side object."
-		return false
-	if name.length() == 1:
-		formula="{left}{name}{right}".format({"right":next.formula, "left":prev.formula, "name":name})
-	else:
-		formula="{left} {name} {right}".format({"right":next.formula, "left":prev.formula, "name":name})
-	return true
-
-
+##Values build function for this operator. Removes left and right hand side Tokens after calculation is completed.
 func build_values() -> void:
 	for i in range(prev.values.size()):
 		if bool(prev.values[i]) == true and bool(next.values[i]) == false or bool(prev.values[i]) == false and bool(next.values[i]) == true:
@@ -31,6 +16,7 @@ func build_values() -> void:
 	expression.rem(prev)
 	expression.rem(next)
 
+##Identify this operator from raw string. returns the length of identified members
 func identify(raw:String) -> int:
 	if OPERATOR_LIST.has(raw[0]):
 		return 1
@@ -38,5 +24,13 @@ func identify(raw:String) -> int:
 		return 3
 	return 0
 
+##Rolls random name from OPERATOR_LIST
+func roll_name() -> void:
+	name=OPERATOR_LIST.pick_random()
+
+##Gives new Object of this type.
 func new() -> Exclusive_Disjunction:
 	return Exclusive_Disjunction.new()
+
+func get_class_name() -> String:
+	return "Exclusive_Disjunction"

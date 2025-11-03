@@ -136,6 +136,16 @@ func remove_double_identifiers(identifiers:Array) -> Array:
 
 #Apparently gdscript dont have ability to pass class names as arguments, so copypaste method it is then:
 
+#Pulls all operators expect ones found from ignore
+func get_all_operators(ignore:Array=[]) -> Array:
+	var tokens:Array=[]
+	var target=data[0]
+	while target != null:
+		if target is Operator and not target.get_class_name() in ignore:
+			tokens.append(target)
+		target=target.next
+	return tokens
+
 ##Returns all [Negation]'s from this [OExpression] but no sub ones.
 func get_negatives() -> Array:
 	var negatives:Array=[]

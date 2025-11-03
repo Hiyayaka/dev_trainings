@@ -37,6 +37,7 @@ func build_values() -> void:
 
 ##Identify this operator from raw string. returns the length of identified members
 func identify(raw:String) -> int:
+	raw=raw.to_lower()
 	if OPERATOR_LIST.has(raw[0]):
 		return 1
 	elif OPERATOR_LIST.has(raw.substr(0, 3)):

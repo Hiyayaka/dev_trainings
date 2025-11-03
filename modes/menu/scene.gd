@@ -27,4 +27,4 @@ func build_buttons() -> void:
 func lazy_naming(dir:String) -> String:
 	if dir == "convert": return "Convert"
 	elif dir == "truthtable": return "Truth table"
-	return "NULL"
+	return dir

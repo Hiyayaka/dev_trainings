@@ -137,6 +137,7 @@ func compile_string(new_string:String)->void:
 		create_fail_message()
 
 #Actin as function pointers (again)
+#also as a side efffect decides order of operations.
 const OPERATION_FUNCTION_NAMES:Array=[
 	"get_negatives",
 	"get_conjunctions",
@@ -177,14 +178,33 @@ func calc_and_update_operators(target:OExpression) -> bool:
 			create_fail_message()
 			return false
 
-#Calculate and display tokens in Expressions
-	for function in OPERATION_FUNCTION_NAMES:
-		var token_list:Array=target.call(function)
-		for token in token_list:
-			if not target.calculate_token_value(token):
-				create_fail_message()
-				return false
-			draw_token([token])
+#1. Need to process negatives first
+	var negations_list:Array=target.get_negatives()
+	for token in negations_list:
+		if not target.calculate_token_value(token):
+			create_fail_message()
+			return false
+		draw_token([token])
+#2. After we need to process operatos in left to right.
+	var all_operators_expect_negations:Array=target.get_all_operators(["Negations"])
+	for token in all_operators_expect_negations:
+		if not is_instance_valid(token): continue
+		if not target.calculate_token_value(token):
+			create_fail_message()
+			return false
+		draw_token([token])
+
+
+
+#Calculate and display tokens in Expressions. Side effect will decide order of operations.
+#Remove this, doesn't calculate in correct order.
+	#for function in OPERATION_FUNCTION_NAMES:
+		#var token_list:Array=target.call(function)
+		#for token in token_list:
+			#if not target.calculate_token_value(token):
+				#create_fail_message()
+				#return false
+			#draw_token([token])
 
 #Update this Expression to have values for next calculations.
 	if not target.calculate_token_value(target):
@@ -208,7 +228,7 @@ func clear_truth_table() -> void:
 		child.queue_free()
 
 #Universal way to draw a any token to truth table.
-func draw_token(tokens) -> void:
+func draw_token(tokens:Array) -> void:
 	var truth_table:HBoxContainer=$CC/VBC/truth_table
 	for token in tokens:
 		var VBC:VBoxContainer=VBoxContainer.new()
